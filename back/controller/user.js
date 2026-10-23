@@ -61,13 +61,13 @@ class ControllerUser {
     }
 
     async Login(req, res) {
-        return res.status(200).send({token: 123})
+        //return res.status(200).send()
         try {
             const { email, password } = req.body
 
             const token = await ServiceUser.Login(email, password)
 
-            res.status(200).sen({ token })
+            res.status(200).send({ token })
         } catch (error) {
             res.status(500).send({ message: error.message })
         }

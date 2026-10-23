@@ -52,12 +52,13 @@ class ServiceUser {
     }
 
     async Login(email, password) {
+        console.log(email,password)
         if (!email, password) {
             throw new Error("Email ou senha inválidos")
         }
 
-        const user = RepositoryUser.BuscarEmail(email)
-
+        const user = await RepositoryUser.BuscarEmail(email)
+        console.log(user)
         if (!user) {
             throw new Error("Email ou senha inválidos")
         }
