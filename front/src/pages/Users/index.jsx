@@ -3,8 +3,7 @@ import './style.css'
 function Users(){
     return(
         <>
-
-        Batata3
+            Batata3
         </>
     )
 }

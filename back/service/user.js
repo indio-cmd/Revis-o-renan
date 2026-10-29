@@ -52,35 +52,31 @@ class ServiceUser {
     }
 
     async Login(email, password) {
-        console.log(email,password)
-        if (!email, password) {
-            throw new Error("Email ou senha inválidos")
+        if(!email || !password) {
+            throw new Error("Email ou senha inválido")
         }
 
         const user = await RepositoryUser.BuscarEmail(email)
-        console.log(user)
-        if (!user) {
-            throw new Error("Email ou senha inválidos")
-        }
 
-        if (
-            !user
+        if(
+            !user 
             || !(await bcrypt.compare(String(password), user.password))
-        ) {
-            throw new Error("Email ou senha inválidos")
+        ){
+            throw new Error("Email ou senha inválido")
         }
 
-        return jwt.sign({
-            id: user.id,
-            email: user.email
-        },
-        SECRET,
-        {
-            expiresIn: 60 * 60
-        }
+        // token
+        return jwt.sign(
+            {
+                id: user.id,
+                email: user.email
+            },
+            SECRET,
+            {
+                expiresIn: 60
+            }
         )
     }
-
 
 }
 

@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import './style.css'
 import { loginUser } from '../../api/user';
+import { useNavigate } from 'react-router-dom'
+
 
 export default function Login() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-        const handleSubmit = async (e) => {
-                e.preventDefault()
-               const response = await  loginUser(email, senha)
-               localStorage.setItem('token', response.token)
-            }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const response = await  loginUser(email, senha)
+        localStorage.setItem('token', response.token)
+      // toast
+        return navigate('/users')
+    }
 
   return (
     <div className="login-container">
