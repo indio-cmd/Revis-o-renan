@@ -4,7 +4,14 @@ import api from './api'
 
 //buscarUm
 
-//criar
+export const criarUser = async (name, email, password) => {
+    const body = { name, email, password }
+    const response = await api.post('v1/user/criar', body, {
+        headers: {'Content-Type': 'application/json'}
+    })
+
+    return response.data
+}
 
 //alterar
 
