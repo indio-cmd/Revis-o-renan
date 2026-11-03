@@ -1,7 +1,7 @@
 import ServiceUser from '../service/user.js'
 
 class ControllerUser {
-
+//r
     async Buscar(req, res) {
         try {
             const users = await ServiceUser.Buscar()

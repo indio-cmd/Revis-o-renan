@@ -13,7 +13,7 @@ export const criarUser = async (name, email, password) => {
     return response.data
 }
 
-//alterar
+//alterarr
 
 //deletar
 export  const loginUser = async (email, password) => {
