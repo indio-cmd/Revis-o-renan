@@ -2,9 +2,11 @@ import './style.css'
 
 function Footer(){
     return(
-        <>
-            Footer
-        </>
+        <footer className="app-footer">
+            <span>Revisão Renan</span>
+            <span className="app-footer-sep">•</span>
+            <span>{new Date().getFullYear()}</span>
+        </footer>
     )
 }
 

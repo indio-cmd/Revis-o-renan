@@ -1,0 +1,157 @@
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 28px;
+    background: rgba(12, 14, 18, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #f0f3f8;
+    animation: app-header-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.app-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+}
+
+.app-brand-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffab3d;
+    box-shadow: 0 0 14px 2px rgba(255, 171, 61, 0.7);
+    animation: app-pulse 2.4s ease-in-out infinite;
+}
+
+.app-header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.app-session {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    font-size: 0.78rem;
+    color: #8b95a5;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.app-session-time {
+    color: #ffab3d;
+    font-variant-numeric: tabular-nums;
+    min-width: 28px;
+}
+
+.app-session-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.app-session-fill {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #d48b28, #ffab3d);
+    transition: width 1s linear;
+}
+
+.app-session.warn {
+    border-color: rgba(255, 90, 110, 0.5);
+    animation: app-blink 1s ease-in-out infinite;
+}
+
+.app-session.warn .app-session-time {
+    color: #ff6b81;
+}
+
+.app-session.warn .app-session-fill {
+    background: #ff6b81;
+}
+
+.app-logout {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f0f3f8;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.app-logout svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.app-logout:hover {
+    background: rgba(255, 90, 110, 0.15);
+    border-color: rgba(255, 90, 110, 0.5);
+    transform: translateY(-1px);
+}
+
+.app-logout:hover svg {
+    transform: translateX(3px);
+}
+
+@keyframes app-header-in {
+    from { opacity: 0; transform: translateY(-100%); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes app-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.35); opacity: 0.7; }
+}
+
+@keyframes app-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@media (max-width: 560px) {
+    .app-header {
+        padding: 12px 16px;
+    }
+
+    .app-session-label {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-header,
+    .app-brand-dot,
+    .app-session.warn {
+        animation: none;
+    }
+}
